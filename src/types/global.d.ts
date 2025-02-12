@@ -1,6 +1,8 @@
+import { Web3Request } from '../types';
+
 interface Window {
   ethereum: {
     isMetaMask: boolean;
-    request: (args: { method: string; params: any[] }) => Promise<any>;
+    request: (args: Web3Request) => Promise<string>;
   };
 } 

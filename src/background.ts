@@ -1,4 +1,5 @@
 import { ethers } from 'ethers';
+import { TransactionRequest, WalletMessage } from './types';
 
 class WalletController {
   private wallet: ethers.HDNodeWallet | null = null;
@@ -19,7 +20,7 @@ class WalletController {
     return this.wallet?.address;
   }
 
-  async signTransaction(tx: any) {
+  async signTransaction(tx: TransactionRequest) {
     if (!this.wallet) throw new Error('Wallet not unlocked');
     return await this.wallet.signTransaction(tx);
   }
@@ -27,24 +28,27 @@ class WalletController {
 
 const walletController = new WalletController();
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request: WalletMessage, sender, sendResponse) => {
   (async () => {
     try {
       switch (request.type) {
-        case 'CREATE_WALLET':
-          const address = await walletController.createWallet(request.password);
+        case 'CREATE_WALLET': {
+          const address = await walletController.createWallet(request.password!);
           sendResponse({ success: true, address });
           break;
-          
-        case 'UNLOCK_WALLET':
-          const unlockedAddress = await walletController.unlockWallet(request.password);
+        }
+        
+        case 'UNLOCK_WALLET': {
+          const unlockedAddress = await walletController.unlockWallet(request.password!);
           sendResponse({ success: true, address: unlockedAddress });
           break;
-          
-        case 'SIGN_TRANSACTION':
-          const signedTx = await walletController.signTransaction(request.transaction);
+        }
+        
+        case 'SIGN_TRANSACTION': {
+          const signedTx = await walletController.signTransaction(request.transaction!);
           sendResponse({ success: true, signedTx });
           break;
+        }
       }
     } catch (error) {
       sendResponse({ success: false, error: (error as Error).message });

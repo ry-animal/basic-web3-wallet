@@ -1,8 +1,10 @@
+import { Web3Request } from './types';
+
 declare global {
   interface Window {
     ethereum: {
       isMetaMask: boolean;
-      request: (args: { method: string; params: any[] }) => Promise<any>;
+      request: (args: Web3Request) => Promise<string>;
     };
   }
 }
@@ -11,7 +13,7 @@ declare global {
 window.addEventListener('load', () => {
   const provider = {
     isMetaMask: true,
-    request: async ({ method, params }: { method: string; params: any[] }) => {
+    request: async ({ method, params }: Web3Request) => {
       switch (method) {
         case 'eth_requestAccounts':
           return chrome.runtime.sendMessage({ type: 'REQUEST_ACCOUNTS' });
