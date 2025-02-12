@@ -1,0 +1,31 @@
+{
+  "name": "basic-web3-wallet",
+  "version": "1.0.0",
+  "description": "A simplified Web3 wallet browser extension",
+  "main": "dist/background.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js --watch",
+    "dev": "webpack --mode development --watch",
+    "prod": "webpack --mode production"
+  },
+  "keywords": [
+    "wallet",
+    "extension",
+    "web3"
+  ],
+  "author": "ry-animal",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.11.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.260",
+    "@types/node": "^20.11.24",
+    "copy-webpack-plugin": "^12.0.2",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  }
+}
