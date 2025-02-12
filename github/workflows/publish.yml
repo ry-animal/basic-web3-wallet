@@ -1,0 +1,7 @@
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+with:
+  node-version: "18"
+  registry-url: "https://npm.pkg.github.com"
+  scope: "@ry-animal"

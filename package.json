@@ -1,7 +1,14 @@
 {
   "name": "basic-web3-wallet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simplified Web3 wallet browser extension",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ry-animal/basic-web3-wallet.git"
+  },
   "main": "dist/background.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
