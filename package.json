@@ -1,6 +1,6 @@
 {
   "name": "basic-web3-wallet",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simplified Web3 wallet browser extension",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
