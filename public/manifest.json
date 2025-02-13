@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Basic Web3 Wallet",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simplified Web3 wallet browser extension",
   "action": {
     "default_popup": "popup.html"
